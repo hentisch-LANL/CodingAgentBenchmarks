@@ -5,8 +5,7 @@
 configuration and executes benchmarks; `site/` builds static reports from results.
 
 Benchmark and agent execution come from sibling checkouts `../abc-bench` and
-`../automaton`, respectively. There are no nested source repositories or
-submodules, and no site-specific GitLab pipeline is included.
+`../automaton`, respectively.
 
 ## Start here
 

@@ -1,8 +1,7 @@
 # Portable GitLab / Slurm deployment
 
-`abc-ci` supplies scripts, not a site pipeline. Create your own `.gitlab-ci.yml`
-using the outline in [README.md](README.md). No cluster-specific pipeline is
-included. Review runner isolation and data publication policy before deployment.
+Create your `.gitlab-ci.yml` using the outline in [README.md](README.md).
+Review runner isolation and data publication policy before deployment.
 
 ## Sources and prerequisites
 

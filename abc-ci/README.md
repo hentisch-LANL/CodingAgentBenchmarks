@@ -3,7 +3,7 @@
 Portable CI orchestration and reporting for **abc-bench**. This directory owns
 GitLab trigger requests, job setup, results handling and static reports; the
 sibling `../abc-bench` owns benchmark execution and `../automaton` owns agent
-execution. There are no submodules or bundled site-specific pipeline files.
+execution.
 
 ## Components
 

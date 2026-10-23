@@ -1,7 +1,7 @@
 # Slurm submission
 
-Cluster-specific launch scripts are not distributed. Adapt this example to your
-site's partition, account, time limits, modules, and approved model endpoint.
+Adapt this example to your site's partition, account, time limits, modules,
+and approved model endpoint.
 Charliecloud, the repository, container image, configuration, and run data must
 be accessible on every allocated node. Install `../automaton`, `../abc-bench`,
 and this component into a shared Python environment; add `.[mpi]` for MPI runs.

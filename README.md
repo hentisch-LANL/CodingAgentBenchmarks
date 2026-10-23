@@ -69,8 +69,7 @@ execution does not require MPI.
    The bundled smoke-test tasks demonstrate the task format.
 2. Supply API credentials through the environment variables named in your
    provider configuration. Replace example endpoints and model identifiers with
-   real values. For a private certificate authority, configure your own CA bundle;
-   no site-specific certificate is distributed here.
+   real values. For a private certificate authority, configure your own CA bundle.
 3. Prepare the required containers before running tasks. Agent harnesses and
    upstream API styles must agree; consult the
    [harness interface](abc-bench/docs/reference/harness-interface.md).
@@ -83,10 +82,6 @@ they are not a substitute for reviewing tasks, containers, verification code,
 and host permissions. Run untrusted code only on appropriately isolated resources.
 
 ## CI deployment
-
-The public release intentionally omits the original site-specific GitLab YAML,
-Darwin submission scripts, internal endpoints, and site CA certificate. The CI
-implementation is included, but it is not a ready-configured hosted service.
 
 Use the [CI README](abc-ci/README.md) and
 [deployment guide](abc-ci/DEPLOYMENT.md) to create your own pipeline. Configure

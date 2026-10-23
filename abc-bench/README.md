@@ -337,7 +337,6 @@ CI can split responsibilities into portable runner roles:
 
 See [CI checks](docs/developer-guide/ci-cd.md) for component commands and the
 sibling [ABC CI documentation](../abc-ci/README.md) for CI orchestration.
-No site-specific pipeline configuration is included in this component.
 
 ## Troubleshooting
 

@@ -31,27 +31,13 @@ the revision alone does not reproduce those changes.
 | CI tooling | `675a1b7dabe093c5ea74b9f7877db7215325883a` |
 | Mining tools | `172da6fd40db03a19eb5d182e410b1bcfb1112aa` |
 
-## Release boundary
-
-Included: component source code, tests, documentation, benchmark smoke tasks,
-container templates, harnesses, the report renderer, and its source assets.
-
-Excluded: nested repository metadata and histories, private submodule
-configuration, site-specific GitLab pipelines, the site CA certificate, Darwin
-batch-submission scripts, development-agent instruction files, generated sites,
-local environments/caches, result archives, crash dumps, and unrelated benchmark
-or legacy-project directories. The CI renderer directory named `site/` contains
-source and is intentionally retained. Vendor/model logo image files are excluded;
-the scientific paper bundled with the Monte Carlo smoke task is retained, as
-confirmed by the repository owner.
-
 Examples use configurable or placeholder provider endpoints and paths. Supply
 credentials through environment variables or your CI secret store. Do not commit
 your local runtime configuration.
 
 ## Before publication
 
-- Review the final diff and the release boundary against the approved scope.
+- Review the final diff against the approved scope.
 - Review your own pipeline, runner isolation, credentials, and storage settings.
 - Exercise a real containerized benchmark and a deployment on the intended host;
   unit tests do not validate a site's Charliecloud or Slurm configuration.
