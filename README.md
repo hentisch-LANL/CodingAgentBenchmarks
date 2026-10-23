@@ -8,10 +8,10 @@ This code has been approved for release by the Feynman-Center and assigned O#523
 # Authors
 This code was primarily developed by Henry Tischler (hentisch@lanl.gov), who is the primary point-of-contact for support or questions. 
 
-> [!NOTE]
-> All following text, aside from the final copyright notices, is LLM generated. 
-
 ## Components
+
+> [!NOTE]
+> All following text, aside from the final copyright notices, is LLM generated.
 
 This repository contains four cooperating tools as ordinary source directories,
 not Git submodules:
