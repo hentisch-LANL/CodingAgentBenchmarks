@@ -1,0 +1,15 @@
+FROM {{ parent_image }}
+
+RUN apt-get update && apt-get install -y \
+    libstdc++6 \
+    && rm -rf /var/lib/apt/lists/*
+
+# STOP-GAP: opencode.ai/install currently redirects to an internal personal
+# machine, so we pull the installer from the anomalyco fork instead. Revert to
+# https://opencode.ai/install once the upstream redirect is fixed.
+RUN /bin/bash -lc "curl -fsSL https://raw.githubusercontent.com/anomalyco/opencode/refs/heads/dev/install | HOME=/opt/opencode bash -s -- --no-modify-path" \
+    && ln -s /opt/opencode/.opencode/bin/opencode /usr/local/bin/opencode
+
+RUN /bin/bash -lc "which opencode && opencode --version"
+
+WORKDIR /workspace

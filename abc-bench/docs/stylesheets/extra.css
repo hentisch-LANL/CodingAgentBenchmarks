@@ -1,0 +1,73 @@
+/* Improved spacing for API documentation - Sphinx-like style */
+
+/* Add more spacing between documented items */
+.doc-contents {
+    margin-bottom: 2rem;
+}
+
+/* Clearer separation for classes and functions */
+.doc-class, .doc-function, .doc-method {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+
+/* Make signatures stand out more */
+.doc-signature {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: var(--md-code-bg-color);
+    border-left: 4px solid var(--md-accent-fg-color);
+}
+
+/* Better spacing for parameters and returns sections */
+.doc-section-title {
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+/* Add spacing between parameter definitions */
+dt {
+    margin-top: 1rem;
+    font-weight: 600;
+}
+
+dd {
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+}
+
+/* Make heading hierarchy clearer */
+.doc h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.doc h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.75rem;
+}
+
+.doc h4 {
+    margin-top: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Source code links */
+.doc-source-link {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Better visual separation for attributes vs methods */
+.doc-attribute {
+    margin-top: 1rem;
+    padding-top: 0.5rem;
+}
+
+/* Improve readability of docstring sections */
+.doc-section-item {
+    margin-bottom: 1rem;
+}

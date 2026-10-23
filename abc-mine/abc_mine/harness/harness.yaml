@@ -1,0 +1,4 @@
+id: mine-agent
+description: Autonomous benchmark-mining agent (OpenCode). Runs inside a caller-supplied Charliecloud container; may read the codebase, run bash to compile and test it, and spawn research subagents.
+entrypoint: run_benchmark.sh
+container_template: mine-agent

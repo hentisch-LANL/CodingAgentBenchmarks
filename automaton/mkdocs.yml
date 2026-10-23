@@ -1,0 +1,111 @@
+site_name: Automaton Documentation
+site_description: A general-purpose sandboxed autonomous-agent execution engine
+repo_url: https://github.com/hentisch-LANL/CodingAgentBenchmarks
+repo_name: automaton
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+    - palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+nav:
+  - Home: index.md
+  - Guide:
+      - Overview: guide/overview.md
+      - Architecture: guide/architecture.md
+      - Container System: guide/container-system.md
+      - Configuration: guide/configuration.md
+      - Harness Interface: guide/harness-interface.md
+      - Agent Pool: guide/agent-pool.md
+  - API Reference:
+      - Overview: api-reference/index.md
+      - automaton.config: api-reference/automaton.config.md
+      - automaton.agent: api-reference/automaton.agent.md
+      - automaton.harness: api-reference/automaton.harness.md
+      - automaton.container: api-reference/automaton.container.md
+      - automaton.proxy: api-reference/automaton.proxy.md
+      - automaton.sandbox: api-reference/automaton.sandbox.md
+      - automaton.usage: api-reference/automaton.usage.md
+      - automaton.pool: api-reference/automaton.pool.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [../automaton]
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_root_full_path: true
+            members_order: source
+            separate_signature: true
+            merge_init_into_class: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            heading_level: 2
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            group_by_category: true
+            filters:
+              - "!^_"
+            inherited_members: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: true
+  - attr_list
+  - def_list
+  - footnotes
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/hentisch-LANL/CodingAgentBenchmarks
+    - icon: fontawesome/brands/python
+      link: https://pypi.org/project/automaton/
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright &copy; 2026 Automaton Contributors

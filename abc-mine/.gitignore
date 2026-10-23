@@ -1,0 +1,48 @@
+# Pipeline outputs (all runs, all stages).
+data/
+
+# Charliecloud images are large binaries; recipes are tracked, images are not.
+containers/*.sqfs
+containers/*.sqfs.sha256
+*.tar
+*.tar.gz
+
+# Cloned codebases under test are never committed here; point codebase.repo at
+# a checkout you manage separately.
+*-src/
+
+# Slurm logs
+logs/
+slurm-*.out
+slurm-*.err
+
+# Config backups written by `preflight --write-config`
+*.yaml.bak
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.eggs/
+
+# Environments
+venv/
+.venv/
+env/
+
+# Tooling caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Docs build
+site/
+
+# Editors / OS
+.vscode/
+.idea/
+*.swp
+*~
+.DS_Store

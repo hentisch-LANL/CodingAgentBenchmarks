@@ -1,0 +1,52 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# ``automaton`` lives in the sibling monorepo component. Ignore any local
+# clone/checkout placed at the component root so it cannot shadow the installed
+# ``automaton`` package on ``sys.path`` during imports or test collection.
+/automaton/
+
+# Virtual environments
+venv/
+env/
+ENV/
+
+# Documentation
+docs-env/
+site/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Benchmark results
+results/
+
+# Generated benchmark assets and local scratch output
+tasks/fortran_transpilation/linpack-*/
+# Commit-benchmark source-repo build cache (intermediate clone; the committed
+# artifact is the LFS-tracked *.repo.sqfs). Synthesized workspaces live only in
+# result dirs, never in the task tree.
+tasks/*/_src/*.git-cache/
+abc_bench/data/
+fparser.log
+
+# Stray agent-session transcripts (scratch output, not project content)
+session-ses_*.md

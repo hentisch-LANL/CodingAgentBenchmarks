@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abc-bench"
+version = "0.2.0"
+description = "ABC Bench: Autonomous benchmark suite for scientific computing tasks"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "ABC Bench Contributors"}
+]
+# ``automaton`` is a sibling monorepo component at ``../automaton`` and
+# installed from that path (``pip install ./../automaton``) before this
+# project. It is intentionally NOT a version-pinned dependency here.
+dependencies = [
+    "pyyaml>=6.0",
+    "requests>=2.0",
+    "tqdm>=4.0",
+]
+
+[project.scripts]
+abc-bench = "abc_bench.cli:main"
+
+[project.optional-dependencies]
+mpi = [
+    # Required for `run-tasks --mpi` (distributes a batch across MPI ranks via
+    # automaton's MPIAgentPool). Mirrors automaton's own ``mpi`` extra; install
+    # with ``pip install 'abc-bench[mpi]'`` (or ``pip install './../automaton[mpi]'``).
+    "mpi4py>=3.1",
+]
+dev = [
+    "pytest>=7.0",
+    "black>=22.0",
+    "mypy>=0.990",
+]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "mkdocstrings[python]>=0.25",
+    "mkdocstrings-python>=1.0",
+    "black>=22.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+consider_namespace_packages = false
+
+# abc_bench is not a published package; it is always installed from a checkout
+# (`pip install -e .`). Runtime assets (harnesses/, containers/, tasks/) are
+# therefore read directly from the repository root rather than shipped as
+# package data.
+[tool.setuptools]
+packages = ["abc_bench"]

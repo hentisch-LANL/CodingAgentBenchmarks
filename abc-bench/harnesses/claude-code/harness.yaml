@@ -1,0 +1,4 @@
+id: claude-code
+description: Anthropic Claude Code CLI autonomous coding agent harness
+entrypoint: run_benchmark.sh
+container_template: claude-code

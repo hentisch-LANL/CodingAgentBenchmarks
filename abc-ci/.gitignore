@@ -1,0 +1,8 @@
+api_artifacts/
+.abc-ci-work/
+__pycache__/
+*.pyc
+public/
+*.egg-info/
+docs-env/
+docs-site/

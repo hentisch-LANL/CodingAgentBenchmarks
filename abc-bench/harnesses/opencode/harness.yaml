@@ -1,0 +1,4 @@
+id: opencode
+description: OpenCode autonomous coding agent harness
+entrypoint: run_benchmark.sh
+container_template: opencode

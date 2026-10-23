@@ -1,0 +1,32 @@
+providers:
+  example:
+    base_url: https://api.example.com/v1
+    api_key_env: MODEL_API_KEY
+    cert: null
+
+  anthropic:
+    base_url: https://api.anthropic.com/v1
+    api_key_env: ANTHROPIC_API_KEY
+    cert: null
+
+  openai:
+    base_url: https://api.openai.com/v1
+    api_key_env: OPENAI_API_KEY
+    cert: null
+
+models:
+  example-model:
+    provider: example
+    model: your-model-id
+
+  anthropic-claude:
+    provider: anthropic
+    model: anthropic/claude-sonnet-4
+
+  openai-gpt4:
+    provider: openai
+    model: gpt-4-turbo-preview
+
+defaults:
+  results_dir: results
+  timeout_seconds: 1800

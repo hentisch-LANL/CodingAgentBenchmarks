@@ -1,0 +1,4 @@
+id: opencode-hybrid
+description: OpenCode planner-builder hybrid harness
+entrypoint: run_benchmark.sh
+container_template: opencode-hybrid

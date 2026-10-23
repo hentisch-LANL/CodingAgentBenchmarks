@@ -1,0 +1,3 @@
+# automaton.config
+
+::: automaton.config

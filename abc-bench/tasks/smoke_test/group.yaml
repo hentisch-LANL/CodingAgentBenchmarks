@@ -1,0 +1,3 @@
+id: smoke_test
+name: Smoke Test
+description: Small sanity-check benchmarks for ABC Bench infrastructure and basic agent behavior.

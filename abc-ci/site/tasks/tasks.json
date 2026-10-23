@@ -1,0 +1,10 @@
+{
+  "hello-world-python": {
+    "name": "Hello World Python",
+    "description": "Basic Python hello world test to verify basic code generation and execution capabilities."
+  },
+  "eos-metropolis-1953": {
+    "name": "EOS Metropolis 1953",
+    "description": "Equation of state calculation using the Metropolis algorithm, testing scientific computing capabilities."
+  }
+}

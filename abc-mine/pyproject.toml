@@ -1,0 +1,59 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "abc-mine"
+version = "0.1.0"
+description = "Mine an arbitrary git codebase for agentic-coding benchmarks and emit ABC Bench tasks (screen / rank / build)."
+readme = "README.md"
+requires-python = ">=3.10"
+license = {text = "MIT"}
+authors = [
+    {name = "LANL-Bench Contributors"}
+]
+# ``automaton`` provides the sandboxed agent-execution engine (Sandbox), the
+# loopback model proxy, and the MPI agent pool. It is expected to be installed
+# separately (editable is fine): the source lives at ../automaton. It is
+# intentionally NOT a version-pinned dependency here, matching how abc-bench
+# treats it.
+dependencies = [
+    "pyyaml>=6.0",
+]
+
+[project.scripts]
+abc-mine = "abc_mine.cli:main"
+
+[project.optional-dependencies]
+# MPI is OPT-IN. The default parallel backend is a local process pool, which
+# needs nothing beyond the standard library, so abc-mine runs serially (or
+# multi-process on one node) on a laptop with no MPI stack at all. Install this
+# extra only to use `--parallel mpi` for multi-node Slurm fan-out.
+mpi = [
+    "mpi4py>=3.1",
+]
+dev = [
+    "pytest>=7.0",
+    "build>=1.2.0",
+    "black>=22.0",
+    "mypy>=0.990",
+]
+docs = [
+    "mkdocs>=1.5",
+    "mkdocs-material>=9.0",
+    "mkdocstrings[python]>=0.25",
+    "mkdocstrings-python>=1.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+include = ["abc_mine*"]
+
+[tool.setuptools.package-data]
+abc_mine = [
+    "templates/*.md",
+    "harness/*",
+    "data/*.yaml",
+]

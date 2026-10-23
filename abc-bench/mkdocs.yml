@@ -1,0 +1,130 @@
+site_name: ABC Bench Documentation
+site_description: Autonomous benchmark suite for scientific computing tasks
+site_url: https://example.com/abc-bench/
+repo_url: https://github.com/example/CodingAgentBenchmarks
+repo_name: example/CodingAgentBenchmarks
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - Installation: user-guide/installation.md
+      - Quickstart: user-guide/quickstart.md
+      - Configuration: user-guide/configuration.md
+      - Running Benchmarks: user-guide/running-benchmarks.md
+      - Managing Containers: user-guide/managing-containers.md
+      - Understanding Results: user-guide/results.md
+  - Developer Guide:
+      - Architecture: developer-guide/architecture.md
+      - Adding Tasks: developer-guide/adding-tasks.md
+      - Adding Harnesses: developer-guide/adding-harnesses.md
+      - Codex Harness: developer-guide/codex-harness.md
+      - Claude Code Harness: developer-guide/claude-code-harness.md
+      - Container System: developer-guide/container-system.md
+      - Development Container: developer-guide/dev-container.md
+      - CI/CD: developer-guide/ci-cd.md
+      - API Reference:
+          - Overview: developer-guide/api-reference/index.md
+          - abc_bench.config: developer-guide/api-reference/abc_bench.config.md
+          - abc_bench.task: developer-guide/api-reference/abc_bench.task.md
+          - abc_bench.groups: developer-guide/api-reference/abc_bench.groups.md
+          - abc_bench.install: developer-guide/api-reference/abc_bench.install.md
+          - abc_bench.squashfs: developer-guide/api-reference/abc_bench.squashfs.md
+          - abc_bench.container: developer-guide/api-reference/abc_bench.container.md
+          - abc_bench.runner: developer-guide/api-reference/abc_bench.runner.md
+          - abc_bench.pool_runner: developer-guide/api-reference/abc_bench.pool_runner.md
+          - abc_bench.cli: developer-guide/api-reference/abc_bench.cli.md
+  - Reference:
+      - CLI Reference: reference/cli.md
+      - Configuration Schema: reference/config-schema.md
+      - Task Structure: reference/task-structure.md
+      - Harness Interface: reference/harness-interface.md
+      - Verification: reference/verification.md
+  - Tasks:
+      - Hello World: tasks/hello-world-python.md
+      - Hello World Prank: tasks/hello-world-prank-python.md
+      - EOS Metropolis 1953: tasks/eos-metropolis-1953.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [., ../automaton]
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_root_full_path: true
+            members_order: source
+            separate_signature: true
+            merge_init_into_class: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            heading_level: 2
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            group_by_category: true
+            filters:
+              - "!^_"
+            inherited_members: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: true
+  - attr_list
+  - def_list
+  - footnotes
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/example/CodingAgentBenchmarks
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright &copy; 2024-2026 LANL-Bench Contributors

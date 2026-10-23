@@ -1,0 +1,3 @@
+# automaton.container
+
+::: automaton.container

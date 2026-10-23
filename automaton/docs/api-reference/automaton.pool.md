@@ -1,0 +1,3 @@
+# automaton.pool
+
+::: automaton.pool

@@ -1,0 +1,6 @@
+FROM {{ parent_image }}
+
+RUN conda install -y numpy scipy \
+    && conda clean -afy
+
+WORKDIR /workspace

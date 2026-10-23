@@ -1,0 +1,46 @@
+FROM ubuntu:24.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV CONDA_DIR=/opt/conda
+ENV PATH="/opt/conda/bin:${PATH}"
+ENV SSL_CERT_FILE=/etc/ssl/certs/ca-certificates.crt
+ENV REQUESTS_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+ENV CURL_CA_BUNDLE=/etc/ssl/certs/ca-certificates.crt
+ENV CONDA_PLUGINS_AUTO_ACCEPT_TOS=yes
+ENV HOME=/var/tmp/automaton-home
+
+RUN apt-get update && apt-get install -y \
+    bash \
+    build-essential \
+    ca-certificates \
+    curl \
+    git \
+    ripgrep \
+    wget \
+    bzip2 \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN update-ca-certificates \
+    && ln -sf /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-bundle.crt \
+    && mkdir -p /etc/pki/tls/certs \
+    && ln -sf /etc/ssl/certs/ca-certificates.crt /etc/pki/tls/certs/ca-bundle.crt
+
+RUN curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /tmp/miniconda.sh \
+    && bash /tmp/miniconda.sh -b -p "${CONDA_DIR}" \
+    && rm /tmp/miniconda.sh \
+    && ln -s "${CONDA_DIR}/bin/conda" /usr/local/bin/conda \
+    && ln -s "${CONDA_DIR}/bin/python" /usr/local/bin/python \
+    && ln -s "${CONDA_DIR}/bin/pip" /usr/local/bin/pip \
+    && conda clean -afy
+
+RUN mkdir -p "${HOME}" \
+    && chmod 0777 "${HOME}" \
+    && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/main \
+    && conda tos accept --override-channels --channel https://repo.anaconda.com/pkgs/r \
+    && chmod -R a+rwX "${HOME}" \
+    && conda install -y python=3.12 pyyaml \
+    && conda clean -afy
+
+SHELL ["/bin/bash", "-lc"]
+
+WORKDIR /workspace

@@ -1,0 +1,25 @@
+# Local environments and generated files
+.venv/
+venv/
+docs-env/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+build/
+dist/
+
+# Local credentials/configuration, results, and crash dumps
+.env
+.env.*
+!.env.example
+*.key
+results/
+api_artifacts/
+core
+core.*
+
+# Per-component ignores handle generated documentation. Do not ignore every
+# site/ directory: abc-ci/site/ contains the report renderer's source code.

@@ -1,0 +1,45 @@
+FROM {{ parent_image }}
+
+# Codex ships statically linked musl binaries per platform, so the harness layer
+# needs no Node/npm runtime. We install the release archive directly rather than
+# going through `npm install -g @openai/codex`, which would pull an entire Node
+# toolchain into the image just to run a launcher script.
+#
+# We install the full `codex-package` archive rather than the bare `codex`
+# binary. Since 0.160 the CLI spawns companion executables (e.g.
+# `codex-code-mode-host`, which runs every tool call) from its own bin
+# directory; the bare binary alone starts, but cannot execute any tool. The
+# package is the release's complete runtime layout, so it carries whatever
+# companions the current release needs without us tracking them by name.
+#
+# The version is deliberately NOT pinned: this tracks the latest published
+# release so benchmark runs exercise current Codex behavior. If a campaign needs
+# a frozen CLI, pin CODEX_RELEASE to a `rust-vX.Y.Z` tag and change the URL from
+# `latest/download` to `download/${CODEX_RELEASE}`.
+RUN /bin/bash -lc 'set -euo pipefail; \
+    case "$(uname -m)" in \
+      x86_64) codex_arch="x86_64-unknown-linux-musl" ;; \
+      aarch64|arm64) codex_arch="aarch64-unknown-linux-musl" ;; \
+      *) echo "unsupported architecture for codex: $(uname -m)" >&2; exit 1 ;; \
+    esac; \
+    mkdir -p /opt/codex; \
+    curl -fsSL --retry 5 --retry-delay 3 --retry-connrefused \
+      -o /tmp/codex-package.tar.gz \
+      "https://github.com/openai/codex/releases/latest/download/codex-package-${codex_arch}.tar.gz"; \
+    tar -xzf /tmp/codex-package.tar.gz -C /opt/codex; \
+    rm -f /tmp/codex-package.tar.gz; \
+    test -x /opt/codex/bin/codex; \
+    ln -s /opt/codex/bin/codex /usr/local/bin/codex'
+
+# Fail the build (rather than a benchmark run) if the binary is unusable, and
+# archive the resolved version/help for run provenance.
+RUN /bin/bash -lc 'set -euo pipefail; \
+    mkdir -p /opt/codex/build-info; \
+    which codex; \
+    codex --version | tee /opt/codex/build-info/version.txt; \
+    cp /opt/codex/codex-package.json /opt/codex/build-info/; \
+    ls -l /opt/codex/bin > /opt/codex/build-info/bin-listing.txt; \
+    codex --help > /opt/codex/build-info/help.txt; \
+    codex exec --help > /opt/codex/build-info/exec-help.txt'
+
+WORKDIR /workspace

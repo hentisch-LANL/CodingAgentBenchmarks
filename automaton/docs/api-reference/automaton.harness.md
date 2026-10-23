@@ -1,0 +1,3 @@
+# automaton.harness
+
+::: automaton.harness

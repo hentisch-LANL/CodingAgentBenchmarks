@@ -1,0 +1,18 @@
+{
+  "opencode": {
+    "name": "OpenCode",
+    "description": "The OpenCode coding agent harness driving a single model. Each agent using this harness pairs OpenCode with one model endpoint."
+  },
+  "opencode-hybrid": {
+    "name": "OpenCode (Hybrid)",
+    "description": "A hybrid OpenCode configuration that pairs two models: one for planning/orchestration and one for execution."
+  },
+  "claude-code": {
+    "name": "Claude Code",
+    "description": "Anthropic's Claude Code CLI running headless (claude -p) against a single model over the Anthropic Messages API. Web tools are offered but always refused; the sandbox has no network egress."
+  },
+  "codex": {
+    "name": "Codex",
+    "description": "OpenAI's Codex CLI running headless (codex exec) against a single model. Its native web search is disabled; the sandbox has no network egress."
+  }
+}

@@ -1,0 +1,100 @@
+site_name: abc-ci Documentation
+site_description: GitLab CI, archival, reporting, and trigger client for abc-bench
+# Set site_url and repo_url in your deployment if desired.
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - content.code.annotate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+nav:
+  - Home: index.md
+  - User Guide:
+      - Installation: user-guide/installation.md
+  - Developer Guide:
+      - API Reference:
+          - Overview: developer-guide/api-reference/index.md
+          - abc_ci_launcher.config: developer-guide/api-reference/abc_ci_launcher.config.md
+          - abc_ci_launcher.gitlab: developer-guide/api-reference/abc_ci_launcher.gitlab.md
+          - abc_ci_launcher.validate: developer-guide/api-reference/abc_ci_launcher.validate.md
+          - abc_ci_launcher.main: developer-guide/api-reference/abc_ci_launcher.main.md
+  - Reference:
+      - CLI Reference: reference/cli.md
+      - GitLab Contract: reference/gitlab-contract.md
+
+plugins:
+  - search
+  - mkdocstrings:
+      handlers:
+        python:
+          paths: [abc-ci-launcher/src]
+          options:
+            docstring_style: numpy
+            show_source: true
+            show_root_heading: true
+            show_root_toc_entry: true
+            show_root_full_path: true
+            members_order: source
+            separate_signature: true
+            merge_init_into_class: true
+            show_signature_annotations: true
+            signature_crossrefs: true
+            heading_level: 2
+            show_symbol_type_heading: true
+            show_symbol_type_toc: true
+            group_by_category: true
+            show_if_no_docstring: true
+            filters:
+              - "!^_"
+            inherited_members: false
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - toc:
+      permalink: true
+  - attr_list
+  - def_list
+  - footnotes
+
+extra_css:
+  - stylesheets/extra.css
+
+copyright: Copyright &copy; 2026 lanlbench-ci contributors
