@@ -1,13 +1,15 @@
 # CodingAgentBenchmarks
 A "monorepo" presenting several tools to assist in the development of coding agent benchmarks and their sandboxed execution on HPC platforms (e.g., in userspace). 
 
-The authors emphasize that the primary motivation of this open-source release is to accelerate internal development (e.g., not having to treat the code as potentially sensitive); that is to say that this repository is not necessarily intended as a public facing utility, and this release is public primarily to comply with laws that require us to release our code. That being said, we are of course happy to see interest in this work and can potentially offer support if you run into issues.
+The authors emphasize that the primary motivation of this open-source release is to accelerate internal development (e.g., by not having to treat the code as potentially sensitive); that is to say that this repository is not necessarily intended as a public facing utility, and this code is released publicly primarily in compliance with regulations mandating that we do so. That being said, we are of course happy to see interest in this work and can potentially offer support if you run into issues.
 
 This code has been approved for release by the Feynman-Center and assigned O#5231.
 
 # Authors
 This code was primarily developed by Henry Tischler (hentisch@lanl.gov), who is the primary point-of-contact for support or questions. 
 
+> [!NOTE]
+> All following text, aside from the final copyright notices, is LLM generated. 
 
 # Copyright
 ## MIT License
